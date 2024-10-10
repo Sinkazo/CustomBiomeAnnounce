@@ -4,12 +4,21 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
+<<<<<<< HEAD
   <groupId>org.dark</groupId>
   <artifactId>CustomBiomeAnnounce</artifactId>
   <version>1.0.1</version>
   <packaging>jar</packaging>
 
   <name>CustomBiomeAnnounce</name>
+=======
+  <groupId></groupId>
+  <artifactId></artifactId>
+  <version></version>
+  <packaging>jar</packaging>
+
+  <name></name>
+>>>>>>> 83b77c7596e2d37760813b0ec0bd0ed275d6345c
 
   <properties>
     <java.version>1.8</java.version>
@@ -49,6 +58,7 @@
     </resources>
   </build>
 
+<<<<<<< HEAD
   <repositories>
       <repository>
           <id>spigotmc-repo</id>
@@ -68,4 +78,9 @@
           <scope>provided</scope>
       </dependency>
   </dependencies>
+=======
+  <repositories></repositories>
+
+  <dependencies></dependencies>
+>>>>>>> 83b77c7596e2d37760813b0ec0bd0ed275d6345c
 </project>

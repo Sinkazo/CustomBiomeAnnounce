@@ -2,8 +2,11 @@ name: CustomBiomeAnnounce
 version: '${project.version}'
 main: org.dark.custombiomeannounce.CustomBiomeAnnounce
 api-version: '1.20'
+<<<<<<< HEAD
 commands:
   cba:
     description: Reloads the plugin configuration
     usage: /<command> reload
     permission: cba.reload
+=======
+>>>>>>> 83b77c7596e2d37760813b0ec0bd0ed275d6345c
