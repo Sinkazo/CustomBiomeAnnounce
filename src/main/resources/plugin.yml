@@ -1,0 +1,4 @@
+name: CustomBiomeAnnounce
+version: '${project.version}'
+main: org.dark.custombiomeannounce.CustomBiomeAnnounce
+api-version: '1.20'
