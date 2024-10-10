@@ -1,6 +1,5 @@
 package org.dark.custombiomeannounce;
 
-<<<<<<< HEAD
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -31,21 +30,10 @@ public class CustomBiomeAnnounce extends JavaPlugin implements Listener {
 
         // Register the listener
         Bukkit.getPluginManager().registerEvents(this, this);
-=======
-import org.bukkit.plugin.java.JavaPlugin;
-
-public final class CustomBiomeAnnounce extends JavaPlugin {
-
-    @Override
-    public void onEnable() {
-        // Plugin startup logic
-
->>>>>>> 83b77c7596e2d37760813b0ec0bd0ed275d6345c
     }
 
     @Override
     public void onDisable() {
-<<<<<<< HEAD
         // Logic for when the plugin is disabled (if necessary)
     }
 
@@ -143,8 +131,5 @@ public final class CustomBiomeAnnounce extends JavaPlugin {
             }
         }
         return capitalizedWords.toString().trim();
-=======
-        // Plugin shutdown logic
->>>>>>> 83b77c7596e2d37760813b0ec0bd0ed275d6345c
     }
 }
