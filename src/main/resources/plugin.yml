@@ -6,3 +6,4 @@ commands:
   cba:
     description: Reloads the plugin configuration
     usage: /<command> reload
+    permission: cba.reload

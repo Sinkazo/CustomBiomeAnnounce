@@ -83,7 +83,16 @@ public class CustomBiomeAnnounce extends JavaPlugin implements Listener {
 
             // Play sound if enabled
             if (config.getBoolean("sound.enabled")) {
-                Sound sound = Sound.valueOf(config.getString("sound.type"));
+                String soundName = config.getString("sound.type").toUpperCase().replace(".", "_");
+                Sound sound;
+
+                try {
+                    sound = Sound.valueOf(soundName);
+                } catch (IllegalArgumentException e) {
+                    player.sendMessage(ChatColor.RED + "The sound " + soundName + " is not recognized. Using default sound.");
+                    sound = Sound.ENTITY_PLAYER_LEVELUP; // Default sound
+                }
+
                 float volume = (float) config.getDouble("sound.volume");
                 float pitch = (float) config.getDouble("sound.pitch");
                 player.playSound(player.getLocation(), sound, volume, pitch);
