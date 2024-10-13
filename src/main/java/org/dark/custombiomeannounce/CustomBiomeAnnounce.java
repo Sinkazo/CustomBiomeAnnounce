@@ -63,8 +63,8 @@ public class CustomBiomeAnnounce extends JavaPlugin implements Listener {
 
         // If the biome has changed
         if (!biome.equals(lastBiome)) {
-            String biomeName = biome.name().replace('_', ' ').toLowerCase();
-            String formattedBiomeName = ChatColor.GREEN + capitalize(biomeName);
+            String biomeName = biome.name().toLowerCase(); // Obtener el nombre del bioma en minúsculas
+            String formattedBiomeName = translateColorCodes(config.getString("biome_names." + biomeName, "Unknown Biome")); // Obtener el nombre formateado
 
             // Show title if enabled
             if (config.getBoolean("title.enabled")) {
@@ -100,6 +100,11 @@ public class CustomBiomeAnnounce extends JavaPlugin implements Listener {
         }
     }
 
+    // Method to translate color codes
+    private String translateColorCodes(String str) {
+        return ChatColor.translateAlternateColorCodes('&', str);
+    }
+
     // Command handling for "cba"
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
@@ -132,4 +137,8 @@ public class CustomBiomeAnnounce extends JavaPlugin implements Listener {
         }
         return capitalizedWords.toString().trim();
     }
+    public String removeVSSelectors(String input) {
+        return input.replaceAll("[\uFE0E\uFE0F]", ""); // Elimina los VS15 y VS16
+    }
+
 }

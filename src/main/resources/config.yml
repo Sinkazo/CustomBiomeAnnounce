@@ -1,24 +1,91 @@
 # List of worlds where the plugin functionality is disabled
-blocked_world:  # List of worlds that should not trigger the biome announcement
+blocked_world:
   - example_world
   - another_world
 
 # Configuration for the title displayed when entering a new biome
 title:
-  enabled: true  # Display the title when changing biomes
-  message_prefix: "You are entering: "  # Prefix displayed before the biome name
-  fade_in: 10  # Time for the title to fade in (in ticks)
-  stay: 70  # Time the title stays on screen (in ticks)
-  fade_out: 20  # Time for the title to fade out (in ticks)
+  enabled: true
+  message_prefix: "You are entering: "
+  fade_in: 10
+  stay: 70
+  fade_out: 20
 
 # Configuration for sending a message in chat when entering a new biome
 message:
-  enabled: true  # Send a chat message when changing biomes
-  text: "Entered biome: %biome%"  # Message displayed in chat, with %biome% as a placeholder
+  enabled: true
+  text: "Entered biome: %biome%"
 
 # Configuration for playing a sound when entering a new biome
 sound:
-  enabled: true  # Play a sound when changing biomes
-  type: "ENTITY_PLAYER_LEVELUP"  # Type of sound to play
-  volume: 1.0  # Volume of the sound
-  pitch: 1.0  # Pitch of the sound
+  enabled: true
+  type: "ENTITY_PLAYER_LEVELUP"
+  volume: 1.0
+  pitch: 1.0
+
+# Biome names configuration
+biome_names:
+  badlands: "&c🪨 Badlands"
+  bamboo_jungle: "&2🎋 Bamboo Jungle"
+  basalt_deltas: "&8🪨 Basalt Deltas"
+  beach: "&e🏖 Beach"
+  birch_forest: "&f🌳 Birch Forest"
+  cherry_grove: "&d🌸 Cherry Grove"
+  cold_ocean: "&9🌊 Cold Ocean"
+  crimson_forest: "&c🌳 Crimson Forest"
+  dark_forest: "&1🌲 Dark Forest"
+  deep_cold_ocean: "&9❄ Deep Cold Ocean"
+  deep_dark: "&3🖤 Deep Dark"
+  deep_frozen_ocean: "&b❄ Deep Frozen Ocean"
+  deep_lukewarm_ocean: "&b🌊 Deep Lukewarm Ocean"
+  deep_ocean: "&9🌊 Deep Ocean"
+  desert: "&6🏜 Desert"
+  dripstone_caves: "&7⛏ Dripstone Caves"
+  end_barrens: "&5🌌 End Barrens"
+  end_highlands: "&5🏔 End Highlands"
+  end_midlands: "&5🏞 End Midlands"
+  eroded_badlands: "&c🏜 Eroded Badlands"
+  flower_forest: "&d🌻 Flower Forest"
+  forest: "&2🌲 Forest"
+  frozen_ocean: "&b❄ Frozen Ocean"
+  frozen_peaks: "&f🏔 Frozen Peaks"
+  frozen_river: "&9❄ Frozen River"
+  grove: "&2🌳 Grove"
+  ice_spikes: "&b🧊 Ice Spikes"
+  jagged_peaks: "&8⛰ Jagged Peaks"
+  jungle: "&2🌴 Jungle"
+  lukewarm_ocean: "&3🌊 Lukewarm Ocean"
+  lush_caves: "&2🌿 Lush Caves"
+  mangrove_swamp: "&2🌴 Mangrove Swamp"
+  meadow: "&a🌼 Meadow"
+  mushroom_fields: "&d🍄 Mushroom Fields"
+  nether_wastes: "&4🔥 Nether Wastes"
+  ocean: "&9🌊 Ocean"
+  old_growth_birch_forest: "&f🌳 Old Growth Birch Forest"
+  old_growth_pine_taiga: "&2🌲 Old Growth Pine Taiga"
+  old_growth_spruce_taiga: "&2🌲 Old Growth Spruce Taiga"
+  plains: "&e🌾 Plains"
+  river: "&9🌊 River"
+  savanna: "&e🌾 Savanna"
+  savanna_plateau: "&e⛰ Savanna Plateau"
+  small_end_islands: "&5🏝 Small End Islands"
+  snowy_beach: "&f⛱ Snowy Beach"
+  snowy_plains: "&f❄ Snowy Plains"
+  snowy_slopes: "&f🏔 Snowy Slopes"
+  snowy_taiga: "&f🌲 Snowy Taiga"
+  soul_sand_valley: "&4🏜 Soul Sand Valley"
+  sparse_jungle: "&2🌴 Sparse Jungle"
+  stony_peaks: "&8🏔 Stony Peaks"
+  stony_shore: "&7🏖 Stony Shore"
+  sunflower_plains: "&e🌻 Sunflower Plains"
+  swamp: "&2🌿 Swamp"
+  taiga: "&2🌲 Taiga"
+  the_end: "&5🌌 The End"
+  the_void: "&8🌌 The Void"
+  warm_ocean: "&b🌊 Warm Ocean"
+  warped_forest: "&5🌳 Warped Forest"
+  windswept_forest: "&2🌳 Windswept Forest"
+  windswept_gravelly_hills: "&7⛰ Windswept Gravelly Hills"
+  windswept_hills: "&7🏔 Windswept Hills"
+  windswept_savanna: "&e🌾 Windswept Savanna"
+  wooded_badlands: "&c🌲 Wooded Badlands"
