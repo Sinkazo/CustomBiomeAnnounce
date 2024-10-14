@@ -69,7 +69,7 @@ public class CustomBiomeAnnounce extends JavaPlugin implements Listener {
             String formattedBiomeName = translateColorCodes(biomeConfig.getDisplayName());
 
             if (config.getBoolean("title.enabled")) {
-                String titleMessage = ChatColor.YELLOW + config.getString("title.message_prefix") + formattedBiomeName;
+                String titleMessage = translateColorCodes(config.getString("title.message_prefix") + formattedBiomeName);
                 player.sendTitle(titleMessage, "",
                         config.getInt("title.fade_in"),
                         config.getInt("title.stay"),
@@ -77,8 +77,8 @@ public class CustomBiomeAnnounce extends JavaPlugin implements Listener {
             }
 
             if (config.getBoolean("message.enabled")) {
-                String chatMessage = config.getString("message.text").replace("%biome%", formattedBiomeName);
-                player.sendMessage(ChatColor.GOLD + chatMessage);
+                String chatMessage = translateColorCodes(config.getString("message.text").replace("%biome%", formattedBiomeName));
+                player.sendMessage(chatMessage);
             }
 
             if (config.getBoolean("sound.enabled")) {
