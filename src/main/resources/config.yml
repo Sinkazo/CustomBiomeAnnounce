@@ -19,73 +19,200 @@ message:
 # Configuration for playing a sound when entering a new biome
 sound:
   enabled: true
-  type: "ENTITY_PLAYER_LEVELUP"
   volume: 1.0
   pitch: 1.0
 
-# Biome names configuration
-biome_names:
-  badlands: "&c🪨 Badlands"
-  bamboo_jungle: "&2🎋 Bamboo Jungle"
-  basalt_deltas: "&8🪨 Basalt Deltas"
-  beach: "&e🏖 Beach"
-  birch_forest: "&f🌳 Birch Forest"
-  cherry_grove: "&d🌸 Cherry Grove"
-  cold_ocean: "&9🌊 Cold Ocean"
-  crimson_forest: "&c🌳 Crimson Forest"
-  dark_forest: "&1🌲 Dark Forest"
-  deep_cold_ocean: "&9❄ Deep Cold Ocean"
-  deep_dark: "&3🖤 Deep Dark"
-  deep_frozen_ocean: "&b❄ Deep Frozen Ocean"
-  deep_lukewarm_ocean: "&b🌊 Deep Lukewarm Ocean"
-  deep_ocean: "&9🌊 Deep Ocean"
-  desert: "&6🏜 Desert"
-  dripstone_caves: "&7⛏ Dripstone Caves"
-  end_barrens: "&5🌌 End Barrens"
-  end_highlands: "&5🏔 End Highlands"
-  end_midlands: "&5🏞 End Midlands"
-  eroded_badlands: "&c🏜 Eroded Badlands"
-  flower_forest: "&d🌻 Flower Forest"
-  forest: "&2🌲 Forest"
-  frozen_ocean: "&b❄ Frozen Ocean"
-  frozen_peaks: "&f🏔 Frozen Peaks"
-  frozen_river: "&9❄ Frozen River"
-  grove: "&2🌳 Grove"
-  ice_spikes: "&b🧊 Ice Spikes"
-  jagged_peaks: "&8⛰ Jagged Peaks"
-  jungle: "&2🌴 Jungle"
-  lukewarm_ocean: "&3🌊 Lukewarm Ocean"
-  lush_caves: "&2🌿 Lush Caves"
-  mangrove_swamp: "&2🌴 Mangrove Swamp"
-  meadow: "&a🌼 Meadow"
-  mushroom_fields: "&d🍄 Mushroom Fields"
-  nether_wastes: "&4🔥 Nether Wastes"
-  ocean: "&9🌊 Ocean"
-  old_growth_birch_forest: "&f🌳 Old Growth Birch Forest"
-  old_growth_pine_taiga: "&2🌲 Old Growth Pine Taiga"
-  old_growth_spruce_taiga: "&2🌲 Old Growth Spruce Taiga"
-  plains: "&e🌾 Plains"
-  river: "&9🌊 River"
-  savanna: "&e🌾 Savanna"
-  savanna_plateau: "&e⛰ Savanna Plateau"
-  small_end_islands: "&5🏝 Small End Islands"
-  snowy_beach: "&f⛱ Snowy Beach"
-  snowy_plains: "&f❄ Snowy Plains"
-  snowy_slopes: "&f🏔 Snowy Slopes"
-  snowy_taiga: "&f🌲 Snowy Taiga"
-  soul_sand_valley: "&4🏜 Soul Sand Valley"
-  sparse_jungle: "&2🌴 Sparse Jungle"
-  stony_peaks: "&8🏔 Stony Peaks"
-  stony_shore: "&7🏖 Stony Shore"
-  sunflower_plains: "&e🌻 Sunflower Plains"
-  swamp: "&2🌿 Swamp"
-  taiga: "&2🌲 Taiga"
-  the_end: "&5🌌 The End"
-  the_void: "&8🌌 The Void"
-  warm_ocean: "&b🌊 Warm Ocean"
-  warped_forest: "&5🌳 Warped Forest"
-  windswept_forest: "&2🌳 Windswept Forest"
-  windswept_gravelly_hills: "&7⛰ Windswept Gravelly Hills"
-  windswept_hills: "&7🏔 Windswept Hills"
-  windswept_savanna: "&e🌾 Windswept Savanna"
-  wooded_badlands: "&c🌲 Wooded Badlands"
+# Biome configuration
+biome_config:
+  badlands:
+    display_name: "&c🪨 Badlands"
+    sound: "BLOCK_SAND_BREAK"
+  bamboo_jungle:
+    display_name: "&2🎋 Bamboo Jungle"
+    sound: "BLOCK_BAMBOO_BREAK"
+  basalt_deltas:
+    display_name: "&8🪨 Basalt Deltas"
+    sound: "BLOCK_BASALT_BREAK"
+  beach:
+    display_name: "&e🏖 Beach"
+    sound: "ENTITY_TURTLE_EGG_HATCH"
+  birch_forest:
+    display_name: "&f🌳 Birch Forest"
+    sound: "BLOCK_WOOD_BREAK"
+  cherry_grove:
+    display_name: "&d🌸 Cherry Grove"
+    sound: "BLOCK_CHERRY_LEAVES_BREAK"
+  cold_ocean:
+    display_name: "&9🌊 Cold Ocean"
+    sound: "ENTITY_DOLPHIN_SPLASH"
+  crimson_forest:
+    display_name: "&c🌳 Crimson Forest"
+    sound: "BLOCK_NETHER_WART_BREAK"
+  dark_forest:
+    display_name: "&1🌲 Dark Forest"
+    sound: "ENTITY_WOLF_HOWL"
+  deep_cold_ocean:
+    display_name: "&9❄ Deep Cold Ocean"
+    sound: "ENTITY_GUARDIAN_AMBIENT"
+  deep_dark:
+    display_name: "&3🖤 Deep Dark"
+    sound: "ENTITY_WARDEN_AMBIENT"
+  deep_frozen_ocean:
+    display_name: "&b❄ Deep Frozen Ocean"
+    sound: "BLOCK_GLASS_BREAK"
+  deep_lukewarm_ocean:
+    display_name: "&b🌊 Deep Lukewarm Ocean"
+    sound: "ENTITY_SQUID_SQUIRT"
+  deep_ocean:
+    display_name: "&9🌊 Deep Ocean"
+    sound: "ENTITY_DROWNED_AMBIENT"
+  desert:
+    display_name: "&6🏜 Desert"
+    sound: "BLOCK_SAND_BREAK"
+  dripstone_caves:
+    display_name: "&7⛏ Dripstone Caves"
+    sound: "BLOCK_DRIPSTONE_BLOCK_BREAK"
+  end_barrens:
+    display_name: "&5🌌 End Barrens"
+    sound: "ENTITY_ENDERMAN_AMBIENT"
+  end_highlands:
+    display_name: "&5🏔 End Highlands"
+    sound: "ENTITY_ENDER_DRAGON_FLAP"
+  end_midlands:
+    display_name: "&5🏞 End Midlands"
+    sound: "ENTITY_SHULKER_AMBIENT"
+  eroded_badlands:
+    display_name: "&c🏜 Eroded Badlands"
+    sound: "BLOCK_SAND_BREAK"
+  flower_forest:
+    display_name: "&d🌻 Flower Forest"
+    sound: "BLOCK_GRASS_BREAK"
+  forest:
+    display_name: "&2🌲 Forest"
+    sound: "ENTITY_FOX_AMBIENT"
+  frozen_ocean:
+    display_name: "&b❄ Frozen Ocean"
+    sound: "BLOCK_GLASS_BREAK"
+  frozen_peaks:
+    display_name: "&f🏔 Frozen Peaks"
+    sound: "BLOCK_POWDER_SNOW_BREAK"
+  frozen_river:
+    display_name: "&9❄ Frozen River"
+    sound: "BLOCK_GLASS_BREAK"
+  grove:
+    display_name: "&2🌳 Grove"
+    sound: "ENTITY_POLAR_BEAR_AMBIENT"
+  ice_spikes:
+    display_name: "&b🧊 Ice Spikes"
+    sound: "BLOCK_GLASS_BREAK"
+  jagged_peaks:
+    display_name: "&8⛰ Jagged Peaks"
+    sound: "ENTITY_GOAT_AMBIENT"
+  jungle:
+    display_name: "&2🌴 Jungle"
+    sound: "ENTITY_PARROT_AMBIENT"
+  lukewarm_ocean:
+    display_name: "&3🌊 Lukewarm Ocean"
+    sound: "ENTITY_TROPICAL_FISH_AMBIENT"
+  lush_caves:
+    display_name: "&2🌿 Lush Caves"
+    sound: "BLOCK_FLOWERING_AZALEA_BREAK"
+  mangrove_swamp:
+    display_name: "&2🌴 Mangrove Swamp"
+    sound: "ENTITY_FROG_AMBIENT"
+  meadow:
+    display_name: "&a🌼 Meadow"
+    sound: "ENTITY_BEE_POLLINATE"
+  mushroom_fields:
+    display_name: "&d🍄 Mushroom Fields"
+    sound: "BLOCK_FUNGUS_BREAK"
+  nether_wastes:
+    display_name: "&4🔥 Nether Wastes"
+    sound: "ENTITY_GHAST_AMBIENT"
+  ocean:
+    display_name: "&9🌊 Ocean"
+    sound: "ENTITY_DOLPHIN_SPLASH"
+  old_growth_birch_forest:
+    display_name: "&f🌳 Old Growth Birch Forest"
+    sound: "BLOCK_WOOD_BREAK"
+  old_growth_pine_taiga:
+    display_name: "&2🌲 Old Growth Pine Taiga"
+    sound: "ENTITY_FOX_AMBIENT"
+  old_growth_spruce_taiga:
+    display_name: "&2🌲 Old Growth Spruce Taiga"
+    sound: "ENTITY_WOLF_AMBIENT"
+  plains:
+    display_name: "&e🌾 Plains"
+    sound: "ENTITY_COW_AMBIENT"
+  river:
+    display_name: "&9🌊 River"
+    sound: "ENTITY_FISH_SWIM"
+  savanna:
+    display_name: "&e🌾 Savanna"
+    sound: "ENTITY_HORSE_AMBIENT"
+  savanna_plateau:
+    display_name: "&e⛰ Savanna Plateau"
+    sound: "ENTITY_LLAMA_AMBIENT"
+  small_end_islands:
+    display_name: "&5🏝 Small End Islands"
+    sound: "ENTITY_ENDERMAN_TELEPORT"
+  snowy_beach:
+    display_name: "&f⛱ Snowy Beach"
+    sound: "BLOCK_SNOW_BREAK"
+  snowy_plains:
+    display_name: "&f❄ Snowy Plains"
+    sound: "BLOCK_SNOW_BREAK"
+  snowy_slopes:
+    display_name: "&f🏔 Snowy Slopes"
+    sound: "BLOCK_POWDER_SNOW_BREAK"
+  snowy_taiga:
+    display_name: "&f🌲 Snowy Taiga"
+    sound: "ENTITY_WOLF_AMBIENT"
+  soul_sand_valley:
+    display_name: "&4🏜 Soul Sand Valley"
+    sound: "BLOCK_SOUL_SAND_BREAK"
+  sparse_jungle:
+    display_name: "&2🌴 Sparse Jungle"
+    sound: "ENTITY_PARROT_AMBIENT"
+  stony_peaks:
+    display_name: "&8🏔 Stony Peaks"
+    sound: "BLOCK_STONE_BREAK"
+  stony_shore:
+    display_name: "&7🏖 Stony Shore"
+    sound: "BLOCK_STONE_BREAK"
+  sunflower_plains:
+    display_name: "&e🌻 Sunflower Plains"
+    sound: "BLOCK_GRASS_BREAK"
+  swamp:
+    display_name: "&2🌿 Swamp"
+    sound: "ENTITY_SLIME_SQUISH"
+  taiga:
+    display_name: "&2🌲 Taiga"
+    sound: "ENTITY_FOX_AMBIENT"
+  the_end:
+    display_name: "&5🌌 The End"
+    sound: "ENTITY_ENDER_DRAGON_AMBIENT"
+  the_void:
+    display_name: "&8🌌 The Void"
+    sound: "BLOCK_END_PORTAL_FRAME_FILL"
+  warm_ocean:
+    display_name: "&b🌊 Warm Ocean"
+    sound: "ENTITY_TROPICAL_FISH_AMBIENT"
+  warped_forest:
+    display_name: "&5🌳 Warped Forest"
+    sound: "BLOCK_WARPED_STEM_BREAK"
+  windswept_forest:
+    display_name: "&2🌳 Windswept Forest"
+    sound: "ENTITY_FOX_AMBIENT"
+  windswept_gravelly_hills:
+    display_name: "&7⛰ Windswept Gravelly Hills"
+    sound: "BLOCK_GRAVEL_BREAK"
+  windswept_hills:
+    display_name: "&7🏔 Windswept Hills"
+    sound: "ENTITY_GOAT_AMBIENT"
+  windswept_savanna:
+    display_name: "&e🌾 Windswept Savanna"
+    sound: "ENTITY_HORSE_AMBIENT"
+  wooded_badlands:
+    display_name: "&c🌲 Wooded Badlands"
+    sound: "BLOCK_ROOTED_DIRT_BREAK"

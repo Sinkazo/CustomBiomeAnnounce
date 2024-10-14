@@ -15,58 +15,59 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.block.Biome;
 
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 public class CustomBiomeAnnounce extends JavaPlugin implements Listener {
 
     private FileConfiguration config;
     private List<String> blockedWorlds;
+    private Map<String, BiomeConfig> biomeConfigs;
 
     @Override
     public void onEnable() {
-        // Load configuration
         saveDefaultConfig();
         config = getConfig();
-        blockedWorlds = config.getStringList("blocked_world"); // Load blocked worlds
-
-        // Register the listener
+        blockedWorlds = config.getStringList("blocked_world");
+        loadBiomeConfigs();
         Bukkit.getPluginManager().registerEvents(this, this);
     }
 
-    @Override
-    public void onDisable() {
-        // Logic for when the plugin is disabled (if necessary)
+    private void loadBiomeConfigs() {
+        biomeConfigs = new HashMap<>();
+        if (config.getConfigurationSection("biome_config") != null) {
+            for (String biomeName : config.getConfigurationSection("biome_config").getKeys(false)) {
+                String displayName = config.getString("biome_config." + biomeName + ".display_name", "Unknown Biome");
+                String soundName = config.getString("biome_config." + biomeName + ".sound", "ENTITY_PLAYER_LEVELUP");
+                biomeConfigs.put(biomeName, new BiomeConfig(displayName, soundName));
+            }
+        }
     }
 
-    // Event triggered when a player moves
     @EventHandler
     public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
-
-        // Check if the player's world is in the blocked worlds list
         if (blockedWorlds.contains(player.getWorld().getName())) {
-            return; // Ignore if the world is blocked
+            return;
         }
 
         Location from = event.getFrom();
         Location to = event.getTo();
 
-        // Check if the player moved to a different block
         if (from.getBlockX() == to.getBlockX() &&
                 from.getBlockY() == to.getBlockY() &&
                 from.getBlockZ() == to.getBlockZ()) {
             return;
         }
 
-        // Get the biome at the new location
         Biome biome = to.getBlock().getBiome();
         Biome lastBiome = from.getBlock().getBiome();
 
-        // If the biome has changed
         if (!biome.equals(lastBiome)) {
-            String biomeName = biome.name().toLowerCase(); // Obtener el nombre del bioma en minúsculas
-            String formattedBiomeName = translateColorCodes(config.getString("biome_names." + biomeName, "Unknown Biome")); // Obtener el nombre formateado
+            String biomeName = biome.name().toLowerCase();
+            BiomeConfig biomeConfig = biomeConfigs.getOrDefault(biomeName, new BiomeConfig("Unknown Biome", "ENTITY_PLAYER_LEVELUP"));
+            String formattedBiomeName = translateColorCodes(biomeConfig.getDisplayName());
 
-            // Show title if enabled
             if (config.getBoolean("title.enabled")) {
                 String titleMessage = ChatColor.YELLOW + config.getString("title.message_prefix") + formattedBiomeName;
                 player.sendTitle(titleMessage, "",
@@ -75,45 +76,42 @@ public class CustomBiomeAnnounce extends JavaPlugin implements Listener {
                         config.getInt("title.fade_out"));
             }
 
-            // Send chat message if enabled
             if (config.getBoolean("message.enabled")) {
                 String chatMessage = config.getString("message.text").replace("%biome%", formattedBiomeName);
                 player.sendMessage(ChatColor.GOLD + chatMessage);
             }
 
-            // Play sound if enabled
             if (config.getBoolean("sound.enabled")) {
-                String soundName = config.getString("sound.type").toUpperCase().replace(".", "_");
-                Sound sound;
-
-                try {
-                    sound = Sound.valueOf(soundName);
-                } catch (IllegalArgumentException e) {
-                    player.sendMessage(ChatColor.RED + "The sound " + soundName + " is not recognized. Using default sound.");
-                    sound = Sound.ENTITY_PLAYER_LEVELUP; // Default sound
-                }
-
-                float volume = (float) config.getDouble("sound.volume");
-                float pitch = (float) config.getDouble("sound.pitch");
-                player.playSound(player.getLocation(), sound, volume, pitch);
+                playBiomeSound(player, biomeConfig.getSound());
             }
         }
     }
 
-    // Method to translate color codes
+    private void playBiomeSound(Player player, String soundName) {
+        Sound sound;
+        try {
+            sound = Sound.valueOf(soundName.toUpperCase().replace(".", "_"));
+        } catch (IllegalArgumentException e) {
+            getLogger().warning("The sound " + soundName + " is not recognized. Using default sound.");
+            sound = Sound.ENTITY_PLAYER_LEVELUP;
+        }
+        float volume = (float) config.getDouble("sound.volume");
+        float pitch = (float) config.getDouble("sound.pitch");
+        player.playSound(player.getLocation(), sound, volume, pitch);
+    }
+
     private String translateColorCodes(String str) {
         return ChatColor.translateAlternateColorCodes('&', str);
     }
 
-    // Command handling for "cba"
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (cmd.getName().equalsIgnoreCase("cba")) {
             if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
-                // Reload the configuration
                 reloadConfig();
-                config = getConfig(); // Update the config reference
-                blockedWorlds = config.getStringList("blocked_world"); // Reload blocked worlds
+                config = getConfig();
+                blockedWorlds = config.getStringList("blocked_world");
+                loadBiomeConfigs();
                 sender.sendMessage(ChatColor.GREEN + "Configuration reloaded successfully.");
                 return true;
             } else {
@@ -123,22 +121,21 @@ public class CustomBiomeAnnounce extends JavaPlugin implements Listener {
         return false;
     }
 
-    // Helper method to capitalize the first letter of each word
-    private String capitalize(String str) {
-        String[] words = str.split(" ");
-        StringBuilder capitalizedWords = new StringBuilder();
+    private class BiomeConfig {
+        private final String displayName;
+        private final String sound;
 
-        for (String word : words) {
-            if (word.length() > 0) {
-                capitalizedWords.append(Character.toUpperCase(word.charAt(0)))
-                        .append(word.substring(1))
-                        .append(" ");
-            }
+        public BiomeConfig(String displayName, String sound) {
+            this.displayName = displayName;
+            this.sound = sound;
         }
-        return capitalizedWords.toString().trim();
-    }
-    public String removeVSSelectors(String input) {
-        return input.replaceAll("[\uFE0E\uFE0F]", ""); // Elimina los VS15 y VS16
-    }
 
+        public String getDisplayName() {
+            return displayName;
+        }
+
+        public String getSound() {
+            return sound;
+        }
+    }
 }
